@@ -17,12 +17,11 @@ import { AddShoppingCart } from '@material-ui/icons';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-function Product({ cart, setCart, indexCart, setIndexCart }) {
+function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart }) {
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
-  const listProductIntial = [];
-  const [product, setProduct] = useState(listProductIntial);
+
   const [alert, setAlert] = useState(false);
   const [er, setEr] = useState(false);
   //    const axios=require('axios');
@@ -31,15 +30,7 @@ function Product({ cart, setCart, indexCart, setIndexCart }) {
   //             console.log(response);           
   //             setImage(response.data);
   //         },[])
-
-  useEffect(() => {
-    const axios = require('axios');
-    axios.get('https://600e76d03bb1d100179df304.mockapi.io/products/')
-      .then((response) => {
-        // console.log(response);
-        setProduct(response.data);
-      })
-  }, []);
+ 
   const handleClose = () => {
     setAlert(false);
   };
