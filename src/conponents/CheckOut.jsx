@@ -5,7 +5,7 @@ import AdressForm from './AdressForm';
 import PaymentForm from './PaymentForm';
 import {Link} from 'react-router-dom';
 const steps = ['Shipping address','Payment details'];
-const CheckOut = ({cart,setCart,setIndexCart}) => {
+const CheckOut = ({cart,setCart,setIndexCart,setOrder,order}) => {
     
     const [activeStep, setActiveStep] = useState(0);
     const classes = useStyles();
@@ -28,7 +28,7 @@ const CheckOut = ({cart,setCart,setIndexCart}) => {
     );
     const Form=()=> activeStep === 0
             ? <AdressForm next={next} cart={cart}/>
-            : <PaymentForm setIndexCart={setIndexCart} setCart={setCart} cart={cart} nextStep={nextStep} backStep={backStep} shippingData={shippingData}/>
+            : <PaymentForm setOrder={setOrder} order={order} setIndexCart={setIndexCart} setCart={setCart} cart={cart} nextStep={nextStep} backStep={backStep} shippingData={shippingData}/>
     return (
         <>
             <div className={classes.toolbar} />

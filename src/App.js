@@ -1,46 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Cart from './conponents/Cart';
-import Product from './conponents/Product';
-import IconButton from '@material-ui/core/IconButton';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import { Icon } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import { makeStyles } from '@material-ui/core/styles';
-import CheckOut from './conponents/CheckOut';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
 import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import HomeIcon from '@material-ui/icons/Home';
-import PersonIcon from '@material-ui/icons/Person';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { HomeOutlined } from '@material-ui/icons';
+import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import './App.css';
-
+import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';
+import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  Browserhis
+
+
+  Link, Route, Switch,
+
+
+  useHistory
 } from "react-router-dom";
+import './App.css';
+import Cart from './conponents/Cart';
+import CheckOut from './conponents/CheckOut';
 import StickyFooter from './conponents/Footer';
-import { HomeOutlined } from '@material-ui/icons';
-import { CircularProgress, Icon } from '@material-ui/core';
 import SignIn from './conponents/Login';
-import ProductManageMent from './conponents/ProductManageMent';
 import OrderManagement from './conponents/OrderManagement';
+import Product from './conponents/Product';
+import ProductManageMent from './conponents/ProductManageMent';
+
 
 function App() {
   const [order, setOrder] = useState([]);
@@ -48,6 +45,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [indexCart, setIndexCart] = useState(0);
   const [listUser, setListUser] = useState([]);
+  const [history, setHistory] = useState('');
   const StyledBadge = withStyles((theme) => ({
     badge: {
       right: -3,
@@ -105,20 +103,22 @@ function App() {
         setOrder(response.data);
       })
   }, []);
-  const [exist, setExist] = useState({});
+  const [exist, setExist] = useState("");
   const logOut = () => {
     setSuccess(false);
   }
-  const history = useHistory();
+ 
   const onLogin = (data) => {
-
-    setExist(listUser.find((x) => x.mail === data.email && x.passWord === data.password));
-    if (exist.mail) {
-      // history.push('/');
+ console.log(data);
+const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.password);
+    if (existt) {
+      console.log(history);
+      // history.push();
       setSuccess(true);
+      setExist(existt);
+      history.push('/');
+     
       setAlert(true);
-      // history.push('/');
-
     } else {
       setErr(true);
       return;
@@ -152,7 +152,7 @@ function App() {
       <Divider />
       <List>
         <ListItem style={{ margin: '0 20px' }} button component={Link} to='/ProductManagement' onClick={handleClose} >
-          <ListItemIcon><InboxIcon /> </ListItemIcon>
+          <ListItemIcon><CategoryOutlinedIcon /> </ListItemIcon>
           <ListItemText primary='Product Management' />
         </ListItem>
 
@@ -161,7 +161,7 @@ function App() {
       <List>
 
         <ListItem style={{ margin: '0 20px' }} component={Link} to='/OrderManagement' button onClick={handleClose} >
-          <ListItemIcon><InboxIcon /></ListItemIcon>
+          <ListItemIcon><LocalShippingOutlinedIcon /></ListItemIcon>
           <ListItemText primary='Order Management' />
         </ListItem>
       </List>
@@ -179,19 +179,11 @@ function App() {
       <Divider />
       <List>
         <ListItem style={{ margin: '0 20px' }} button component={Link} to='/Login' onClick={handleClose} >
-          <ListItemIcon><InboxIcon /> </ListItemIcon>
-          <ListItemText primary='Đăng nhập' />
+          <ListItemIcon><VpnKeyOutlinedIcon /> </ListItemIcon>
+          <ListItemText primary='Login' />
         </ListItem>
 
       </List>
-
-      {/* <List>
-       
-          <ListItem style={{margin:'0 20px'}} button onClick={handleClose} >
-            <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText primary='function' />
-          </ListItem>
-      </List> */}
     </div>
   );
 
@@ -256,13 +248,15 @@ function App() {
             </Route>
             <Route path="/Login">
 
-              <SignIn alert={alert} setAlert={setAlert} err={err} setErr={setErr} onLogin={onLogin} />
+              <SignIn setHistory={setHistory} alert={alert} setAlert={setAlert} err={err} setErr={setErr} onLogin={onLogin} />
             </Route>
             <Route path="/Checkout">
               <CheckOut
                 cart={cart}
                 setCart={setCart}
                 setIndexCart={setIndexCart}
+                setOrder={setOrder}
+                order={order}
               />
             </Route>
 

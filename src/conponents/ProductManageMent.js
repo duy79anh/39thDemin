@@ -1,11 +1,14 @@
 import { Table, TableBody, TableHead, TableCell, TableRow, IconButton, Typography, TextField, Button } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import EditIcon from '@material-ui/icons/Edit';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import axios from 'axios';
 import { useForm, FormProvider } from 'react-hook-form';
 import FormInput from '../CustomTextField';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'; 
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const ProductManageMent = ({ product, setProduct }) => {
 
@@ -78,28 +81,28 @@ const ProductManageMent = ({ product, setProduct }) => {
         })
     }
     const onSubmitHandler = (data) => {
-        console.log(data);   
+        console.log(data);
         let urlCreate = 'https://600e76d03bb1d100179df304.mockapi.io/products/';
         axios({
-            method:'POST',
-            url:urlCreate,
-            data:{
+            method: 'POST',
+            url: urlCreate,
+            data: {
                 name: data.name,
                 price: data.price,
             }
-        },[])
-        .then((response)=>{
-            const {data}=response;
-            setProduct([...product,data]);
-            window.alert('Product was Added!');
-            setClicked(false);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        }, [])
+            .then((response) => {
+                const { data } = response;
+                setProduct([...product, data]);
+                window.alert('Product was Added!');
+                setClicked(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     const onClickDelete = (value) => {
-        const conf = window.confirm('Are you want to delete this product?');
+        const conf = window.confirm('Do you want to delete this product?');
         if (conf === true) {
             const result = onDelete(value);
             result.then((response) => {
@@ -118,6 +121,7 @@ const ProductManageMent = ({ product, setProduct }) => {
             return;
         }
     }
+   
     const onAddProduct = () => {
         setClicked(true);
     }
@@ -127,10 +131,10 @@ const ProductManageMent = ({ product, setProduct }) => {
     const formAddProduct = () => clicked === true ? (
         <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit((data) => onSubmitHandler({ ...data }))}>
-                <div  style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }}>
                     <FormInput required name='name' label='Name*' />
                     <FormInput required name='price' label='Price*' />
-                
+
 
 
                     <Button style={{ margin: '10px' }} type='submit' variant='outlined' >Submit</Button>
@@ -161,6 +165,7 @@ const ProductManageMent = ({ product, setProduct }) => {
                         <TableCell>Id</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Price</TableCell>
+                        <TableCell>Image</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
@@ -172,6 +177,7 @@ const ProductManageMent = ({ product, setProduct }) => {
                                     <TableCell>{value.id}</TableCell>
                                     <TableCell>{value.click == true ? <TextField onChange={e => onChangeHandler(e, value)} name='name' defaultValue={value.name} /> : value.name}</TableCell>
                                     <TableCell>{value.click == true ? <TextField onChange={e => onChangeHandler(e, value)} name='price' defaultValue={value.price} /> : value.price}</TableCell>
+                                    <TableCell><div><img style={{ width: 100, height: 50 }} src={value.image} /></div></TableCell>
                                     <TableCell>
 
                                         <IconButton onClick={() => { onClickEdit(value) }}>
@@ -190,7 +196,6 @@ const ProductManageMent = ({ product, setProduct }) => {
                     }
                 </TableBody>
             </Table>
-
         </div>
     )
 }

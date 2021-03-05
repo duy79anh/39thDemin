@@ -1,22 +1,24 @@
-import Image from '@material-ui/icons/Image';
-import CardMedia from '@material-ui/core/CardMedia';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
 import { red } from '@material-ui/core/colors';
-import { AddShoppingCart } from '@material-ui/icons';
+import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { AddShoppingCart } from '@material-ui/icons';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import MuiAlert from '@material-ui/lab/Alert';
+import React, { useState } from 'react';
+
 function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart }) {
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -24,12 +26,18 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
 
   const [alert, setAlert] = useState(false);
   const [er, setEr] = useState(false);
-  //    const axios=require('axios');
-  //    axios.get('https://600e76d03bb1d100179df304.mockapi.io/products/9')
-  //         .then(  (response)=>{
-  //             console.log(response);           
-  //             setImage(response.data);
-  //         },[])
+  const [age, setAge] = useState('');
+
+  const handleChangeCbo = (event) => {
+      const sort=event.target.value;
+    setAge(sort);
+    if(sort==='lowest'){
+      setProduct(product.sort((a,b)=>a.price-b.price));
+    }else if(sort==='highest'){
+      setProduct(product.sort((a,b)=>b.price-a.price));
+    }
+    
+  };
  
   const handleClose = () => {
     setAlert(false);
@@ -47,9 +55,6 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
       setIndexCart(indexCart + 1);
       setAlert(true);
     }
-    // setCart([...cart,{...value,qty:1}]);
-    // console.log(cart);
-    // setAlert(true);
     
   }
   const useStyles = makeStyles((theme) => ({
@@ -75,7 +80,6 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
   function FormRow() {
     return (
       <React.Fragment >
-
         {
           product.map((value) => {
             return (
@@ -127,7 +131,19 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
 
   return (
     <div style={{ marginTop: 50, marginLeft: 60 }}>
-
+           <FormControl variant="outlined" style={{position:'-webkit-sticky', margin: 10, minWidth: 120}} >
+        <InputLabel id="demo-simple-select-outlined-label">Price</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={age}
+          onChange={handleChangeCbo}
+          label="Age"
+        >
+          <MenuItem value='lowest'>lowest</MenuItem>
+          <MenuItem value='highest'>highest</MenuItem>
+        </Select>
+      </FormControl>
 
       <Grid maxWidth='sm' container spacing={2}>
         <Grid container item xs={12} spacing={3}>

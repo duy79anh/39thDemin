@@ -36,8 +36,14 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
         setAlert(false);
     };
     const emptyCart = () => {
-        setCart([]);
-        setIndexCart(0);
+        const conf = window.confirm('Are you sure?');
+        if(conf===true){
+            setCart([]);
+            setIndexCart(0);
+        }else{
+            return;
+        }
+       
     }
     const onReduce = (value) => {
         const exist = cart.find((x) => x.id === value.id);

@@ -4,7 +4,7 @@ import {Elements,CardElement,ElementsConsumer} from '@stripe/react-stripe-js';
 import {loadStrip} from '@stripe/stripe-js';
 import Review from './Review';
 import axios from 'axios';
-const PaymentForm = ({cart,backStep,shippingData,nextStep,setCart,setIndexCart}) => {
+const PaymentForm = ({cart,backStep,shippingData,nextStep,setCart,setIndexCart,setOrder,order}) => {
     const totalPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
     const time = new Date().toLocaleDateString();
     const listItem= cart.map((list)=>{
@@ -28,7 +28,15 @@ const PaymentForm = ({cart,backStep,shippingData,nextStep,setCart,setIndexCart})
                 totalOrder: totalPrice,
                 status:'not confirmed yet',
             }
-        },[]);
+        },[])
+        .then((response)=>{
+            
+            const {data}= response;
+            console.log(data);
+          
+            setOrder([...order,data]);
+        })
+        
         nextStep();
     }
     return (

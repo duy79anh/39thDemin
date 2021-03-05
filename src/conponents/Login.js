@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FormPassword from '../CustomLogin';
 import FormEmail from './CustomLogin1';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import Product from './Product';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,9 +37,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn({ onLogin,setErr,setAlert,err,alert }) {
+export default function SignIn({ onLogin,setErr,setAlert,err,alert,setHistory }) {
     const methods = useForm();
-
+        setHistory(useHistory());
     function Alert(props) {
         return <MuiAlert elevation={6} variant="filled" {...props} />;
     }
@@ -64,7 +64,7 @@ export default function SignIn({ onLogin,setErr,setAlert,err,alert }) {
                     Log In
         </Typography>
                 <FormProvider {...methods}>
-                    <form className={classes.form} onSubmit={methods.handleSubmit((data) => { onLogin({ ...data }) })}>
+                    <form className={classes.form} onSubmit={methods.handleSubmit((data,history) => { onLogin({ ...data }) })}>
                         <FormEmail required label='Email*' name='email' />
                         <FormPassword required label='Password*' name='password' />
                         <FormControlLabel
