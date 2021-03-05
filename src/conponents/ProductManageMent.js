@@ -1,14 +1,11 @@
-import { Table, TableBody, TableHead, TableCell, TableRow, IconButton, Typography, TextField, Button } from '@material-ui/core'
-import React, { useState,useEffect } from 'react'
+import { Button, IconButton, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@material-ui/core';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import EditIcon from '@material-ui/icons/Edit';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import axios from 'axios';
-import { useForm, FormProvider } from 'react-hook-form';
+import React, { useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import FormInput from '../CustomTextField';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'; 
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const ProductManageMent = ({ product, setProduct }) => {
 
