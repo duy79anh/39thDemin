@@ -1,10 +1,8 @@
-import React, { useState, useMemo } from 'react'
-import { InputLabel, MenuItem, Button, Grid, Typography } from '@material-ui/core';
-import { useForm, FormProvider } from 'react-hook-form';
-import FormInput from '../CustomTextField';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { Button, Grid, Typography } from '@material-ui/core';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import useStyles from './Style';
+import FormInput from '../customComponent/CustomTextField';
 const AdressForm = ({ cart,next }) => {
     const methods = useForm();
    

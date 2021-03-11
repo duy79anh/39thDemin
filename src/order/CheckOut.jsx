@@ -1,9 +1,9 @@
-import React, { useState ,useEffect} from 'react'
-import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, List } from '@material-ui/core';
-import useStyles from './Style';
+import { Button, Paper, Step, StepLabel, Stepper, Typography } from '@material-ui/core';
 import AdressForm from './AdressForm';
 import PaymentForm from './PaymentForm';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import useStyles from '../conponents/Style';
 const steps = ['Shipping address','Payment details'];
 const CheckOut = ({cart,setCart,setIndexCart,setOrder,order}) => {
     

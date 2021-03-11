@@ -1,18 +1,18 @@
+import { IconButton, Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Snackbar from '@material-ui/core/Snackbar';
+import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Table from '@material-ui/core/Table';
-import React, { useEffect, useState, useReducer } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Card, IconButton, Typography } from '@material-ui/core';
-import { DeleteForeverOutlined, Email } from '@material-ui/icons';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
+import { DeleteForeverOutlined } from '@material-ui/icons';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import MuiAlert from '@material-ui/lab/Alert';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import EmptyCart from './EmptyCart';
 function Cart({ cart, setCart, indexCart, setIndexCart }) {
     const [alert, setAlert] = useState(false);
@@ -73,6 +73,7 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
                 < TableHead>
                     <TableRow >
                         <TableCell>Name</TableCell>
+                        <TableCell></TableCell>
                         <TableCell>Price</TableCell>
                         <TableCell>Image</TableCell>
                         <TableCell>Quantity</TableCell>
@@ -85,8 +86,9 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
                             return (
                                 <TableRow key={value.id} >
                                     <TableCell>{value.name}
-                                        <Typography display='inline' style={{ marginLeft: 40 }} color='secondary'> X {value.qty}</Typography>
+                                        
                                     </TableCell>
+                                    <TableCell><Typography display='inline' style={{ marginLeft: 40 }} color='secondary'> X {value.qty}</Typography></TableCell>
                                     <TableCell style={{ fontWeight: 'bold', color: 'blueviolet' }}>{value.price * value.qty} $</TableCell>
                                     <TableCell><div><img style={{ width: 100, height: 50 }} src={value.image} /></div></TableCell>
                                     <TableCell>

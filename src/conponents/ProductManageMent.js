@@ -5,7 +5,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import FormInput from '../CustomTextField';
+import FormInput from '../customComponent/CustomTextField';
 
 const ProductManageMent = ({ product, setProduct }) => {
 

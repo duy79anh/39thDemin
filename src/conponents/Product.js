@@ -11,8 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 import Snackbar from '@material-ui/core/Snackbar';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade,makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { AddShoppingCart } from '@material-ui/icons';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
@@ -27,6 +29,7 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
   const [alert, setAlert] = useState(false);
   const [er, setEr] = useState(false);
   const [age, setAge] = useState('');
+  const [searchItem, setSearchItem] = useState('');
 
   const handleChangeCbo = (event) => {
       const sort=event.target.value;
@@ -75,13 +78,93 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
     avatar: {
       backgroundColor: red[400],
     },
+    search: {
+      position: 'relative',
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: '#e8f9fa',
+      '&:hover': {
+        backgroundColor: '#bdddde',
+      },
+      marginRight: theme.spacing(2),
+      marginLeft: 0,
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: '300px',
+       
+      },
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 2),
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    inputRoot: {
+      color: 'inherit',
+    },
+    inputInput: {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        width: '20ch',
+      },
+    },
   }));
   const classes = useStyles();
+  const searchByName=()=>{
+    return(
+      <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
+      </div>
+      <InputBase onChange={event=>{setSearchItem(event.target.value)}}
+        placeholder="Search…"
+        classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput,
+        }}
+        inputProps={{ 'aria-label': 'search' }}
+      />
+    </div>
+    );
+  }
+  function sortByPrice(){
+    return(
+      
+      <FormControl variant="outlined" style={{position:'-webkit-sticky', margin: 17, minWidth: 100}} >
+      <InputLabel id="demo-simple-select-outlined-label">Price</InputLabel>
+      <Select
+        labelId="demo-simple-select-outlined-label"
+        id="demo-simple-select-outlined"
+        value={age}
+        onChange={handleChangeCbo}
+        label="Age"
+      >
+        <MenuItem value='lowest'>lowest</MenuItem>
+        <MenuItem value='highest'>highest</MenuItem>
+      </Select>
+    </FormControl>
+      
+    );
+  }
   function FormRow() {
     return (
       <React.Fragment >
         {
-          product.map((value) => {
+          product.filter((val)=>{
+            if(searchItem==''){
+              return val
+            }else if(val.name.toLowerCase().includes(searchItem.toLowerCase())){
+                return val
+            }
+          }).map((value) => {
             return (
               <Card key={value.id} className={classes.root}>
                 <CardHeader
@@ -130,20 +213,16 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
   }
 
   return (
-    <div style={{ marginTop: 50, marginLeft: 60 }}>
-           <FormControl variant="outlined" style={{position:'-webkit-sticky', margin: 10, minWidth: 120}} >
-        <InputLabel id="demo-simple-select-outlined-label">Price</InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={age}
-          onChange={handleChangeCbo}
-          label="Age"
-        >
-          <MenuItem value='lowest'>lowest</MenuItem>
-          <MenuItem value='highest'>highest</MenuItem>
-        </Select>
-      </FormControl>
+    <div style={{  marginTop: 50, marginLeft: 60 }}>
+     
+           
+          
+           <div style={{display:'flex'}}>
+           {sortByPrice()}
+             <div style={{margin:'25px 0px'}}>
+             {searchByName()}
+             </div>
+           </div>
 
       <Grid maxWidth='sm' container spacing={2}>
         <Grid container item xs={12} spacing={3}>

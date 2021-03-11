@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import FormPassword from '../CustomLogin';
-import FormEmail from './CustomLogin1';
-import { Link,useHistory } from 'react-router-dom';
-import Product from './Product';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import MuiAlert from '@material-ui/lab/Alert';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import FormPassword from '../customComponent/CustomLogin';
+import FormEmail from '../customComponent/CustomLogin1';
 
 const useStyles = makeStyles((theme) => ({
     paper: {

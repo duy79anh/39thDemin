@@ -31,7 +31,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Cart from './conponents/Cart';
-import CheckOut from './conponents/CheckOut';
+import CheckOut from './order/CheckOut';
 import StickyFooter from './conponents/Footer';
 import SignIn from './conponents/Login';
 import OrderManagement from './conponents/OrderManagement';
