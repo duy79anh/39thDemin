@@ -1,8 +1,8 @@
 {
   "name": "assignment",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://nganbph10804.github.io/simpleE-ComerceApp/",
+  "private": false,
+  "homepage": "https://simple-e-comerce-app.vercel.app/",
   "engines": {
     "npm": "6.14.10",
     "node": "v14.15.4"
