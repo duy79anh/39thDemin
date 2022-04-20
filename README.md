@@ -1,8 +1,8 @@
-# ReactJs + MaterialUi+ MockAPI
+# Công nghệ ReactJs + MaterialUi+ MockAPI
 
-# view deployment https://simple-e-comerce-app3-gbzy23247-nganbph10804.vercel.app/
-# to Login with administrator role 
--email: nganbph10804@fpt.edu.vn
+# địa chỉ trang web: https://39th-demin.vercel.app/
+# để login với vai trò admin
+-email:malibu988383@gmail.com
 -password: abcd1234
 
 
