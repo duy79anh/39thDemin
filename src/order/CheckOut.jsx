@@ -20,10 +20,10 @@ const CheckOut = ({cart,setCart,setIndexCart,setOrder,order}) => {
     const Confirmation =()  =>(
         <div>
              <div>
-                 <Typography variant='h5'>Thank you for your purchase {shippingData.firstName}</Typography>
+                 <Typography variant='h5'>Cảm ơn bạn đã đặt hàng: {shippingData.firstName}</Typography>
              </div>
              <br/>
-             <Button component={Link} to='/' type='button' variant='outlined'>Back to Home</Button>
+             <Button component={Link} to='/' type='button' variant='outlined'>Tiếp tục mua sắm</Button>
         </div>
     );
     const Form=()=> activeStep === 0
@@ -34,7 +34,7 @@ const CheckOut = ({cart,setCart,setIndexCart,setOrder,order}) => {
             <div className={classes.toolbar} />
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
-                    <Typography variant='h4' align='center'>CheckOut</Typography>
+                    <Typography variant='h4' align='center'>Thanh toán</Typography>
                     
                     <Stepper activeStep={activeStep} className={classes.stepper} >
                         {steps.map((step) => (

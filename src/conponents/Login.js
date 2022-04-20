@@ -55,10 +55,10 @@ export default function SignIn({ onLogin,setErr,setAlert,err,alert,setHistory })
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Doged Store
+                    39th Demin
         </Typography>
                 <Typography style={{ fontWeight: 900 }} variant="h7">
-                    Log In
+                    Đăng nhập
         </Typography>
                 <FormProvider {...methods}>
                     <form className={classes.form} onSubmit={methods.handleSubmit((data,history) => { onLogin({ ...data }) })}>
@@ -75,18 +75,18 @@ export default function SignIn({ onLogin,setErr,setAlert,err,alert,setHistory })
                             color="primary"
                             className={classes.submit}
                         >
-                            Log In
+                            Đăng nhập
           </Button>
                     </form>
                 </FormProvider>
                 <Snackbar open={alert} autoHideDuration={6000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success">
-                        Login Success!
+                        Đăng nhập thành công!
   </Alert>
                 </Snackbar>
                 <Snackbar open={err} autoHideDuration={6000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="error">
-                        Email or Password invalid ! Please try again!
+                        Email hoặc mật khẩu không đúng ! Vui lòng thử lại!
   </Alert>
                 </Snackbar>
             </div>

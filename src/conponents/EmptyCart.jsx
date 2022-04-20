@@ -4,7 +4,7 @@ const EmptyCart = () => {
     return (
         <>
         <React.Fragment >
-          <Typography style={{fontWeight:'bold',marginTop: 148,paddingBottom:90}} variant='h3' color='secondary' align='center'>  Your Cart is Empty!</Typography>
+          <Typography style={{fontWeight:'bold',marginTop: 148,paddingBottom:90}} variant='h3' color='secondary' align='center'> Ồ! Giỏ hàng của bạn đang trống!</Typography>
           </React.Fragment>
         </>
     )

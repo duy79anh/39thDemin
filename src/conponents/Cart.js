@@ -36,7 +36,7 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
         setAlert(false);
     };
     const emptyCart = () => {
-        const conf = window.confirm('Are you sure?');
+        const conf = window.confirm('Bạn có chắc không?');
         if(conf===true){
             setCart([]);
             setIndexCart(0);
@@ -70,13 +70,13 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
     const FormCart=()=>(
         <div style={{ padding: 50 }} >
             <Table>
-                < TableHead>
+                <TableHead>
                     <TableRow >
-                        <TableCell>Name</TableCell>
+                        <TableCell>Tên</TableCell>
                         <TableCell></TableCell>
-                        <TableCell>Price</TableCell>
-                        <TableCell>Image</TableCell>
-                        <TableCell>Quantity</TableCell>
+                        <TableCell>Giá</TableCell>
+                        <TableCell>Ảnh sản phẩm</TableCell>
+                        <TableCell>Số lượng</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
@@ -113,7 +113,7 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
                                         </ButtonGroup>
 
                                     </TableCell>
-                                    <TableCell> Remove
+                                    <TableCell> Xóa
                                     <IconButton onClick={() => { removeItem(value) }}>
                                             <DeleteForeverOutlined />
                                         </IconButton>
@@ -129,14 +129,14 @@ function Cart({ cart, setCart, indexCart, setIndexCart }) {
             </Table>
             <Snackbar open={alert} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success">
-                    Removed from Cart!
+                    Xóa khỏi giỏ hàng!
   </Alert>
             </Snackbar>
             <div marginTop='50'>
-                <Typography style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 20 }} variant='h5' f color='secondary' >Total money: {totalPrice} $</Typography>
+                <Typography style={{ textAlign: 'center', fontWeight: 'bold', marginTop: 20 }} variant='h5' f color='secondary' >Tổng tiền: {totalPrice} $</Typography>
                 <div style={{ display:'flex',justifyContent:'space-between' }}>
-                    <Button style={{ marginRight: 20 }} onClick={() => { emptyCart() }} size='large' typpe='button' variant='contained' color='secondary'>Empty Cart</Button>
-                    <Button component={Link}  to='/Checkout'  size='large' typpe='button' variant='contained' color='primary'>Check Out</Button>
+                    <Button style={{ marginRight: 20 }} onClick={() => { emptyCart() }} size='large' typpe='button' variant='contained' color='secondary'>Reset</Button>
+                    <Button component={Link}  to='/Checkout'  size='large' typpe='button' variant='contained' color='primary'>Thanh toán</Button>
                 </div>
             </div>
         </div>

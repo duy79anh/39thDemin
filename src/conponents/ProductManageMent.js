@@ -46,7 +46,7 @@ const ProductManageMent = ({ product, setProduct }) => {
     };
     const onUpdateProduct = (value) => {
 
-        let urlUpdate = 'https://600e76d03bb1d100179df304.mockapi.io/products/' + value.id;
+        let urlUpdate = 'https://6241159919f609879242ccd5.mockapi.io/products/' + value.id;
         axios({
             method: 'PUT',
             url: urlUpdate,
@@ -71,7 +71,7 @@ const ProductManageMent = ({ product, setProduct }) => {
 
     }
     const onDelete = (value) => {
-        let url = 'https://600e76d03bb1d100179df304.mockapi.io/products/' + value.id;
+        let url = 'https://6241159919f609879242ccd5.mockapi.io/products/' + value.id;
         return axios({
             method: 'DELETE',
             url: url,
@@ -79,7 +79,7 @@ const ProductManageMent = ({ product, setProduct }) => {
     }
     const onSubmitHandler = (data) => {
         console.log(data);
-        let urlCreate = 'https://600e76d03bb1d100179df304.mockapi.io/products/';
+        let urlCreate = 'https://6241159919f609879242ccd5.mockapi.io/products/';
         axios({
             method: 'POST',
             url: urlCreate,
@@ -91,7 +91,7 @@ const ProductManageMent = ({ product, setProduct }) => {
             .then((response) => {
                 const { data } = response;
                 setProduct([...product, data]);
-                window.alert('Product was Added!');
+                window.alert('Sản phẩm đã được thêm');
                 setClicked(false);
             })
             .catch((err) => {
@@ -99,7 +99,7 @@ const ProductManageMent = ({ product, setProduct }) => {
             })
     }
     const onClickDelete = (value) => {
-        const conf = window.confirm('Do you want to delete this product?');
+        const conf = window.confirm('Bạn có muốn xóa sản phẩm này?');
         if (conf === true) {
             const result = onDelete(value);
             result.then((response) => {
@@ -134,7 +134,7 @@ const ProductManageMent = ({ product, setProduct }) => {
 
 
 
-                    <Button style={{ margin: '10px' }} type='submit' variant='outlined' >Submit</Button>
+                    <Button style={{ margin: '10px' }} type='submit' variant='outlined' >Xác nhận</Button>
                     <Button style={{ margin: '10px' }} variant='outlined' onClick={() => { onCancel() }}>
                         Cancel
          </Button>
@@ -147,11 +147,11 @@ const ProductManageMent = ({ product, setProduct }) => {
     return (
         <div>
             <div>
-                <Typography style={{ margin: '40px 0px', textAlign: 'center', fontWeight: 800 }} color='secondary' variant='h5'>Product Management</Typography>
+                <Typography style={{ margin: '40px 0px', textAlign: 'center', fontWeight: 800 }} color='secondary' variant='h5'>Quản lý sản phẩm</Typography>
             </div>
             <div style={{ display: 'flex' }}>
                 <IconButton style={{ margin: '10px 20px' }} onClick={() => { onAddProduct() }}>
-                    Add New    <AddCircleIcon />
+                    Thêm sản phẩm   <AddCircleIcon />
                 </IconButton>
 
                 {formAddProduct()}
@@ -160,9 +160,9 @@ const ProductManageMent = ({ product, setProduct }) => {
                 <TableHead>
                     <TableRow>
                         <TableCell>Id</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Price</TableCell>
-                        <TableCell>Image</TableCell>
+                        <TableCell>Tên</TableCell>
+                        <TableCell>Giá</TableCell>
+                        <TableCell>Ảnh</TableCell>
                         <TableCell>Action</TableCell>
                     </TableRow>
                 </TableHead>
@@ -184,7 +184,7 @@ const ProductManageMent = ({ product, setProduct }) => {
                                             <HighlightOffIcon />
                                         </IconButton>
                                         {value.click == true ? <IconButton onClick={() => { onUpdateProduct(value) }}>
-                                            Save
+                                            Lưu
                                     </IconButton> : ''}
                                     </TableCell>
                                 </TableRow>

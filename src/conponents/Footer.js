@@ -10,12 +10,12 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
-      {'Copyright ©  ngabinh239@gmail.com  '}
-      <Link color="primary" href="https://fb.com/Ngafko.lacaf">
-        Contact me
-      </Link>{' '}
+      {'Copyright © malibu988383@gmail.com'}
       {new Date().getFullYear()}
       {'.'}
+      <Link color="primary" href="https://www.facebook.com/tenladuyanh ">
+        Liên hệ
+      </Link>{' '}
     </Typography>
   );
 }
@@ -59,13 +59,15 @@ export default function StickyFooter() {
       <Container component="main" className={classes.main} maxWidth='sm'>
 
        <Typography variant="h4" component="h1" gutterBottom>
-          About Us
+          Về chúng tôi
         </Typography>
         <Typography variant="subtitle1" >
-          {'Pin a footer to the bottom of the viewport.'}
-          {'The footer will move as the main element of the page grows.'}
+          {'39th Demin là trang thương mại điện tử phát triên bởi Duy Anh Trần'}
+          </Typography>
+          <Typography variant="subtitle1" >
+          {'Chúng tôi cung cấp các loại mặt hàng may mặc cho giới trẻ'}
         </Typography>
-        <Typography variant="body1">Sticky footer placeholder.</Typography>
+        <Typography variant="body1">Mang lại chất lượng tốt nhất</Typography>
   
       </Container>
       <footer className={classes.footer}>

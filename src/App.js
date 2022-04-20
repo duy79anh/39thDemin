@@ -82,24 +82,22 @@ function App() {
   const [err, setErr] = useState(false);
   useEffect(() => {
     const axios = require('axios');
-    axios.get('https://600e76d03bb1d100179df304.mockapi.io/user/')
+    axios.get('https://6241159919f609879242ccd5.mockapi.io/user/')
       .then((response) => {
         setListUser(response.data);
       })
   }, []);
   useEffect(() => {
     const axios = require('axios');
-    axios.get('https://600e76d03bb1d100179df304.mockapi.io/products/')
+    axios.get('https://6241159919f609879242ccd5.mockapi.io/products/')
       .then((response) => {
-        // console.log(response);
         setProduct(response.data);
       })
   }, []);
   useEffect(() => {
     const axios = require('axios');
-    axios.get('https://600e76d03bb1d100179df304.mockapi.io/orderDetails/')
+    axios.get('https://6241159919f609879242ccd5.mockapi.io/orderDetails/')
       .then((response) => {
-        // console.log(response);
         setOrder(response.data);
       })
   }, []);
@@ -112,8 +110,6 @@ function App() {
  console.log(data);
 const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.password);
     if (existt) {
-      console.log(history);
-      // history.push();
       setSuccess(true);
       setExist(existt);
       history.push('/');
@@ -138,7 +134,7 @@ const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.
         <Icon >
           <HomeOutlined />
         </Icon>
-        <Typography style={{ margin: '0 20px', fontWeight: 700 }} variant='h5'>Dash Board</Typography>
+        <Typography style={{ margin: '0 20px', fontWeight: 700 }} variant='h5'>Danh mục</Typography>
       </div>
       <div style={{ textAlign: 'center', margin: '10px 20px' }}>
         <Icon>
@@ -153,7 +149,7 @@ const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.
       <List>
         <ListItem style={{ margin: '0 20px' }} button component={Link} to='/ProductManagement' onClick={handleClose} >
           <ListItemIcon><CategoryOutlinedIcon /> </ListItemIcon>
-          <ListItemText primary='Product Management' />
+          <ListItemText primary='Quản lý sản phẩm' />
         </ListItem>
 
       </List>
@@ -162,7 +158,7 @@ const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.
 
         <ListItem style={{ margin: '0 20px' }} component={Link} to='/OrderManagement' button onClick={handleClose} >
           <ListItemIcon><LocalShippingOutlinedIcon /></ListItemIcon>
-          <ListItemText primary='Order Management' />
+          <ListItemText primary='Quản lý đơn hàng' />
         </ListItem>
       </List>
     </div>
@@ -173,7 +169,7 @@ const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.
         <Icon>
           <HomeOutlined />
         </Icon>
-        <Typography style={{ margin: '0 20px', fontWeight: 700 }} variant='h5'>Dash Board</Typography>
+        <Typography style={{ margin: '0 20px', fontWeight: 700 }} variant='h5'>Danh mục</Typography>
 
       </div>
       <Divider />
@@ -214,7 +210,7 @@ const existt= listUser.find((x) => x.mail === data.email && x.passWord === data.
               </SwipeableDrawer>
             </React.Fragment>
             <Typography className={classes.title} variant="h5" noWrap >
-              <Link to="/">Doged Store</Link>
+              <Link to="/">79th Demin</Link>
             </Typography>
             <li>
               <Link to="/Cart">

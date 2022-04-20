@@ -108,7 +108,6 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -147,8 +146,8 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
         onChange={handleChangeCbo}
         label="Age"
       >
-        <MenuItem value='lowest'>lowest</MenuItem>
-        <MenuItem value='highest'>highest</MenuItem>
+        <MenuItem value='lowest'>Thấp nhất</MenuItem>
+        <MenuItem value='highest'>Cao nhất</MenuItem>
       </Select>
     </FormControl>
       
@@ -199,13 +198,13 @@ function Product({ product,setProduct, cart, setCart, indexCart, setIndexCart })
         }
         <Snackbar open={alert} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success">
-            Added to Cart!
+            Đã thêm vào giỏ hàng!
   </Alert>
 
         </Snackbar>
         <Snackbar open={er} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleCloseEr} severity='error'>
-            {`This product is already in Cart! \n Please choose another product!`}
+            {`Sản phẩm này đã có trong giỏ hàng! \n Vui lòng chọn sản phẩm khác!`}
           </Alert>
         </Snackbar>
       </React.Fragment>

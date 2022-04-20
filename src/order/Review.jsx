@@ -4,14 +4,14 @@ const Review = ({ cart, shippingData }) => {
     const totalPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
     return (
         <>
-            <Typography variant='h6' align='justify' >Order Information</Typography>
+            <Typography variant='h6' align='justify' >Thông tin đơn hàng</Typography>
             <Grid style={{ textAlign: 'inherit',padding: '10px 25px' }} >
-                <Typography variant='subtitle1'> Consignee Name: {shippingData.firstName} {shippingData.lastName} </Typography>
-                <Typography variant='subtitle1'> Adress: {shippingData.adress} </Typography>
-                <Typography variant='subtitle1'> Phone Numbers: {shippingData.phone} </Typography>
+                <Typography variant='subtitle1'> Người nhận: {shippingData.firstName} {shippingData.lastName} </Typography>
+                <Typography variant='subtitle1'> Địa chỉ: {shippingData.adress} </Typography>
+                <Typography variant='subtitle1'> Số điện thoại: {shippingData.phone} </Typography>
                 <Typography variant='subtitle1'> Email: {shippingData.email} </Typography>
             </Grid>
-            <Typography variant='h6' gutterBottom>Order Summary</Typography>
+            <Typography variant='h6' gutterBottom>Thông tin mặt hàng</Typography>
             <List >
                 {cart.map((product) => (
                     <ListItem style={{ padding: '10px 0' }} key={product.name}>

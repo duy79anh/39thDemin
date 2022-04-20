@@ -10,13 +10,11 @@ import axios from 'axios';
 const OrderManagement = ({order,setOrder}) => {
     const [checked, setChecked] = useState(false);
     const handleChange = (value) => {
-        // setChecked((prev) => !prev);
         const exist = order.find((x) => x.orderId === value);
       if (exist) {
           setOrder(
               order.map((x) => x.orderId === value ? { ...exist, state: exist.state =false } : x)
           );
-            // listItem(value);
             console.log(exist.state);
       }
       };
@@ -31,8 +29,6 @@ const OrderManagement = ({order,setOrder}) => {
       }
       }
     const listItem =(value)=>{
-      // console.log(value);
-     
      return (
             <div >
               <FormControlLabel
@@ -60,7 +56,7 @@ const OrderManagement = ({order,setOrder}) => {
           );
     }
     const onUpdateStatus=(value)=>{
-     const conf=window.confirm('Do you want to confirm this Order?');
+     const conf=window.confirm('Bạn có muốn xác nhận đơn hàng này?');
      if(conf===true){
       const exist = order.find((x) => x.orderId === value.orderId);
       if (exist) {
@@ -68,7 +64,7 @@ const OrderManagement = ({order,setOrder}) => {
               order.map((x) => x.orderId === value.orderId ? { ...exist, status: exist.status ='confirmed' } : x)
           );
     }
-    let url='https://600e76d03bb1d100179df304.mockapi.io/orderDetails/'+value.orderId;
+    let url='https://6241159919f609879242ccd5.mockapi.io/orderDetails/'+value.orderId;
     axios({
       method:'PUT',
       url:url,
@@ -83,19 +79,19 @@ const OrderManagement = ({order,setOrder}) => {
   }
     return (
         <div>
-            <Typography style={{margin:'20px 0px',textAlign:'center',fontWeight:800}} color='secondary' variant='h5'>Order Management</Typography>
+            <Typography style={{margin:'20px 0px',textAlign:'center',fontWeight:800}} color='secondary' variant='h5'>Quản lý đơn hàng</Typography>
             <Table>
                 <TableHead>
                     <TableRow>
-                    <TableCell>Order Id</TableCell>
-                    <TableCell>Created At</TableCell>
-                    <TableCell>Customer Name</TableCell>
-                    <TableCell>Address</TableCell>
-                    <TableCell>Phone</TableCell>
+                    <TableCell>Mã đơn</TableCell>
+                    <TableCell>Ngày order</TableCell>
+                    <TableCell>Tên KH</TableCell>
+                    <TableCell>Địa chỉ</TableCell>
+                    <TableCell>SĐT</TableCell>
                     <TableCell>Email</TableCell>
-                    <TableCell>ListItem</TableCell>
-                    <TableCell>Total</TableCell>
-                    <TableCell>Status</TableCell>
+                    <TableCell>List sản phẩm</TableCell>
+                    <TableCell>Tổng</TableCell>
+                    <TableCell>Trạng thái</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -110,8 +106,8 @@ const OrderManagement = ({order,setOrder}) => {
                                 <TableCell>{value.phone}</TableCell>
                                 <TableCell>{value.email}</TableCell>
                                 <TableCell>{' '+value.listProduct }</TableCell>
-                                <TableCell>{value.totalOrder}</TableCell>
-                                <TableCell>{value.status==='not confirmed yet'? <div>{value.status}<IconButton onClick={()=>{onUpdateStatus(value)}}><CheckIcon/></IconButton></div>:value.status}</TableCell>
+                                <TableCell>{value.totalOrder}.0 vnđ</TableCell>
+                                <TableCell>{value.status==='Chưa xác nhận'? <div>{value.status}<IconButton onClick={()=>{onUpdateStatus(value)}}><CheckIcon/></IconButton></div>:value.status}</TableCell>
                                 </TableRow>
                             );
                         })
